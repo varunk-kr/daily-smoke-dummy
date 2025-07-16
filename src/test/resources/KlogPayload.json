@@ -1,0 +1,1 @@
+{"query":{"bool":{"must":[{"match":{"message":"klogSent_Success"}},{"match":{"messageDetail.orderNumber":"1230626143121587701"}}]}}}

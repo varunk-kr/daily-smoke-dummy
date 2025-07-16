@@ -1,0 +1,253 @@
+name: E2E- Staging Deployment Build
+on:
+  workflow_call:
+    secrets:
+      SETTINGS_XML_BASE64:
+        required: true
+  workflow_dispatch:
+
+env:
+  ARTIFACTORY_EDGE_USERNAME_REF: ${{ secrets.ARTIFACTORY_EDGE_USERNAME }}
+  ARTIFACTORY_EDGE_TOKEN_REF: ${{ secrets.ARTIFACTORY_EDGE_TOKEN }}
+  TZ: 'America/New_York'
+  HARVESTER_VERSION: '5.20.1'
+  CIAO_VERSION: '3.3-debug.502'
+
+jobs:
+  run_automation_tests_job1:
+    name: Bulk_Staging_Job1
+    runs-on: [ self-hosted,kubernetes ]
+    container: maven:3.8.5-openjdk-11
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v2
+        with:
+          java-version: "21"
+          distribution: temurin
+          overwrite-settings: true
+
+      - name: Restore Maven dependencies from cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Decode settings.xml from secret
+        run: |
+          mkdir -p ~/.m2
+          echo "${{ secrets.SETTINGS_XML_BASE64 }}" | base64 --decode > ~/.m2/settings.xml
+        shell: bash
+        
+      - name: Getting branch name
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+
+      - name: Run automation tests with smokeHTDbSingleThreadBauFFILLSVCS14375.xml
+        run: >-
+          mvn clean test --settings ~/.m2/settings.xml -DsuiteFolder="smoke" -Dsuite="smokeDbSingleThreadPclAllFulfillmentTypesFFILLSVSC12730FFILLSVCS9000FFILLSVCS8832FFILLSVCS8847" -Dreportportal="true" -Dlaunch-name="Bulk_Staging_Job1" -Dbranch=${BRANCH_NAME} -DHARVESTER_VERSION="${{ env.HARVESTER_VERSION }}" -DCIAO_VERSION="${{ env.CIAO_VERSION }}"
+           # continue-on-error: true
+
+        id: scenario_1
+        #        continue-on-error: true
+        #        if: always()
+        if: ${{ ! cancelled() }}
+
+      - name: Upload logs and extent for harris teeter job1
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Logs and Extent Reports for job1
+          path: |
+            target/Logs/*
+            test-output/Reports
+          if-no-files-found: ignore
+
+      - name: Upload results.json
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Results json file for job1
+          path: |
+            src/test/resources/test-results/results.json
+          if-no-files-found: ignore
+          retain-on-cancel: false
+
+      - name: Upload Surefire reports as artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Surefire Reports Job1
+          path: target/surefire-reports/TEST-*.xml
+          if-no-files-found: ignore
+
+      - name: Publish surefire test report scenario_1
+        if: ${{ always() }}
+        uses: scacap/action-surefire-report@v1
+        with:
+          report_paths: "**/surefire-reports/TEST-*.xml"
+
+  run_automation_tests_job_2:
+    name: Anchor_Staging_Job2
+    runs-on: [ self-hosted,kubernetes ]
+    container: maven:3.8.5-openjdk-11
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v2
+        with:
+          java-version: "21"
+          distribution: temurin
+          overwrite-settings: true
+
+      - name: Restore Maven dependencies from cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Decode settings.xml from secret
+        run: |
+          mkdir -p ~/.m2
+          echo "${{ secrets.SETTINGS_XML_BASE64 }}" | base64 --decode > ~/.m2/settings.xml
+        shell: bash
+        
+      - name: Getting branch name
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+
+      - name: Run automation tests with smokePclShiptDeliveryFFILLSVCS2262.xml
+        run: >-
+          mvn clean test --settings ~/.m2/settings.xml -DsuiteFolder="smoke" -Dsuite="smokePclShiptDeliveryFFILLSVCS2262" -Dreportportal="true" -Dlaunch-name="Anchor_Staging_Job2" -Dbranch=${BRANCH_NAME} -DHARVESTER_VERSION="${{ env.HARVESTER_VERSION }}" -DCIAO_VERSION="${{ env.CIAO_VERSION }}"
+         # continue-on-error: true
+
+        id: scenario_2
+        #        continue-on-error: true
+        #        if: always()
+        if: ${{ ! cancelled() }}
+
+      - name: Upload logs and extent report for job2
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Logs and Extent Reports for job2
+          path: |
+            target/Logs/*
+            test-output/Reports
+          if-no-files-found: ignore
+
+      - name: Upload results.json
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Results json file for job2
+          path: |
+            src/test/resources/test-results/results.json
+          if-no-files-found: ignore
+          retain-on-cancel: false
+
+      - name: Upload Surefire reports as artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Surefire Reports Job2
+          path: target/surefire-reports/TEST-*.xml
+          if-no-files-found: ignore
+
+      - name: Publish surefire test report scenario_2
+        if: ${{ always() }}
+        uses: scacap/action-surefire-report@v1
+        with:
+          report_paths: "**/surefire-reports/TEST-*.xml"
+
+
+  run_automation_tests_job3:
+    name: Wave_Staging_Job3
+    runs-on: [ self-hosted,kubernetes ]
+    container: maven:3.8.5-openjdk-11
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v2
+        with:
+          java-version: "21"
+          distribution: temurin
+          overwrite-settings: true
+
+      - name: Restore Maven dependencies from cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Decode settings.xml from secret
+        run: |
+          mkdir -p ~/.m2
+          echo "${{ secrets.SETTINGS_XML_BASE64 }}" | base64 --decode > ~/.m2/settings.xml
+        shell: bash
+        
+      - name: Getting branch name
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
+
+      - name: Run automation tests with smokePclAllFulfillmentTypes.xml
+        run: >-
+          mvn clean test --settings ~/.m2/settings.xml -DsuiteFolder="smoke" -Dsuite="smokePclAllFulfillmentTypes" -Dreportportal="true" -Dlaunch-name="Wave_Staging_Job3" -Dbranch=${BRANCH_NAME} -DHARVESTER_VERSION="${{ env.HARVESTER_VERSION }}" -DCIAO_VERSION="${{ env.CIAO_VERSION }}"
+           # continue-on-error: true
+
+        id: scenario_3
+        #        continue-on-error: true
+        if: ${{ ! cancelled() }}
+      #        if: always()
+
+      - name: Upload logs and extent report for job3
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Logs and Extent Reports for job3
+          path: |
+            target/Logs/*
+            test-output/Reports
+          if-no-files-found: ignore
+
+      - name: Upload results.json
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Results json file for job3
+          path: |
+            src/test/resources/test-results/results.json
+          if-no-files-found: ignore
+          retain-on-cancel: false
+
+      - name: Upload Surefire reports as artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Surefire Reports Job3
+          path: target/surefire-reports/TEST-*.xml
+          if-no-files-found: ignore
+
+      - name: Publish surefire test report scenario_3
+        if: ${{ always() }}
+        uses: scacap/action-surefire-report@v1
+        with:
+          report_paths: "**/surefire-reports/TEST-*.xml"

@@ -1,0 +1,30 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Regression ETE" parallel="false" preserve-order="true" thread-count="1" group-by-instances="true">
+    <listeners>
+        <listener
+                class-name="com.krogerqa.seleniumcentral.framework.listeners.ExtentTestNGIReporterListener"/>
+        <listener class-name="com.krogerqa.seleniumcentral.framework.listeners.TestNG_ConsoleRunner"/>
+    </listeners>
+    <test name="Web1-KCP: Validate new order creation via KSP and verify Order in Cue for Rush Order cancelling from Cue ">
+        <parameter name="grid" value="selenoidGrid"/>
+        <parameter name="platform" value="Linux"/>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browserVersion" value="latest"/>
+        <parameter name="url" value="https://www-stage.kroger.com/signin"/>
+        <parameter name="wait" value="150"/>
+        <parameter name="logging" value="info"/>
+        <parameter name="driverType" value="browser"/>
+        <parameter name="highlight" value="false"/>
+        <parameter name="retryFailedTests" value="0"/>
+        <parameter name="singleSessionSuite" value="true"/>
+        <groups>
+            <run>
+                <include name="ete_rush_order_tc_6693_web_part1_nonEbt"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.web.cases.rushOrderWithPCL"/>
+        </packages>
+    </test>
+</suite>
+

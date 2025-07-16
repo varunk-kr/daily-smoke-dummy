@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Fulfillment ETE">
+    <listeners>
+        <listener class-name="com.krogerqa.seleniumcentral.framework.listeners.ExtentTestNGIReporterListener"/>
+        <listener class-name="com.krogerqa.seleniumcentral.framework.listeners.TestNG_ConsoleRunner"/>
+        <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener"/>
+    </listeners>
+
+    <test name="Order creation and New order validation in Cue" parallel="methods" thread-count="999">
+        <parameter name="grid" value="selenoidGrid"/>
+        <parameter name="platform" value="Linux"/>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browserVersion" value="latest"/>
+        <parameter name="url" value="https://www-stage.kroger.com/signin"/>
+        <parameter name="wait" value="20"/>
+        <parameter name="logging" value="info"/>
+        <parameter name="driverType" value="browser"/>
+        <parameter name="highlight" value="false"/>
+        <parameter name="retryFailedTests" value="0"/>
+        <groups>
+            <run>
+                <include name="ete_instacart_tc_12846_web_part1_nonEbt"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.web.cases.instacart"/>
+        </packages>
+    </test>
+</suite>

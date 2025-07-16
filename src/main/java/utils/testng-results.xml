@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="16" passed="16" failed="0" skipped="0">
+
+    <suite started-at="2025-06-18T06:42:06 EDT" name="ModFS E2E Smoke Flows" finished-at="2025-06-18T07:06:06 EDT" duration-ms="1440082">
+
+        <test started-at="2025-06-18T06:58:13 EDT" name="Web4 Cue: Verify the order picked up and paid status in cue" finished-at="2025-06-18T07:06:06 EDT" duration-ms="473442">
+            <class name="com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest">
+                <test-method signature="validateE2eNonEbtNonPclSmokeTestPaid()[pri:0, instance:com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest@6ee8dcd3]" id="ShiptDelivery" started-at="2025-06-18T06:58:18 EDT" name="validateE2eNonEbtNonPclSmokeTestPaid" description="Validate E2E Shipt Delivery order fulfillment (Picking and Staging Using Harvester Native app)" finished-at="2025-06-18T07:05:52 EDT" duration-ms="454387" status="FAIL">
+                </test-method>
+            </class>
+        </test>
+
+        <test started-at="2025-06-18T06:58:13 EDT" name="Web4 Cue: Verify the order picked up and paid status in cue" finished-at="2025-06-18T07:06:06 EDT" duration-ms="473442">
+            <class name="com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest">
+                <test-method signature="validateE2eNonEbtNonPclSmokeTestPaid()[pri:0, instance:com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest@6ee8dcd3]" id="ModifyCancelPcl" started-at="2025-06-18T06:58:18 EDT" name="validateE2eNonEbtNonPclSmokeTestPaid" description="Validate E2E fulfillment for Modify order and Cancel from Ciao assigning PCL (Picking and Staging Using Harvester Native app)" finished-at="2025-06-18T07:05:52 EDT" duration-ms="454387" status="FAIL">
+                </test-method>
+            </class>
+        </test>
+
+        <test started-at="2025-06-18T06:58:13 EDT" name="Web4 Cue: Verify the order picked up and paid status in cue" finished-at="2025-06-18T07:06:06 EDT" duration-ms="473442">
+            <class name="com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest">
+                <test-method signature="validateE2eNonEbtNonPclSmokeTestPaid()[pri:0, instance:com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest@6ee8dcd3]" id="ReusePcl" started-at="2025-06-18T06:58:18 EDT" name="validateE2eNonEbtNonPclSmokeTestPaid" description="Validate E2E fulfillment for Re-use PCL assigning PCL (Picking and Staging Using Harvester Native app)" finished-at="2025-06-18T07:05:52 EDT" duration-ms="454387" status="FAIL">
+                </test-method>
+            </class>
+        </test>
+
+        <test started-at="2025-06-18T06:58:13 EDT" name="Web4 Cue: Verify the order picked up and paid status in cue" finished-at="2025-06-18T07:06:06 EDT" duration-ms="473442">
+            <class name="com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest">
+                <test-method signature="validateE2eNonEbtNonPclSmokeTestPaid()[pri:0, instance:com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest@6ee8dcd3]" id="AllFulfillmentTypeSmoke" started-at="2025-06-18T06:58:18 EDT" name="validateE2eNonEbtNonPclSmokeTestPaid" description="Fulfillment Smoke-(1. Substitute Accept and Reject, 2. Full OOS, 3. Not Ready Service Counter item, 4. Shorting, 5. Non-EBT order fulfillment)" finished-at="2025-06-18T07:05:52 EDT" duration-ms="454387" status="FAIL">
+                </test-method>
+            </class>
+        </test>
+
+        <test started-at="2025-06-18T06:58:13 EDT" name="Web4 Cue: Verify the order picked up and paid status in cue" finished-at="2025-06-18T07:06:06 EDT" duration-ms="473442">
+            <class name="com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest">
+                <test-method signature="validateE2eNonEbtNonPclSmokeTestPaid()[pri:0, instance:com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest@6ee8dcd3]" id="TakeOverCarryOverTrolleyPcl" started-at="2025-06-18T06:58:18 EDT" name="validateE2eNonEbtNonPclSmokeTestPaid" description="Validate E2E Carry Over and Take Over order fulfillment (Picking and Staging using Harvester Native app)" finished-at="2025-06-18T07:05:52 EDT" duration-ms="454387" status="FAIL">
+                </test-method>
+            </class>
+        </test>
+
+        <test started-at="2025-06-18T06:58:13 EDT" name="Web4 Cue: Verify the order picked up and paid status in cue" finished-at="2025-06-18T07:06:06 EDT" duration-ms="473442">
+            <class name="com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest">
+                <test-method signature="validateE2eNonEbtNonPclSmokeTestPaid()[pri:0, instance:com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest@6ee8dcd3]" id="WithSellByUnitAndSellByWeightItem" started-at="2025-06-18T06:58:18 EDT" name="validateE2eNonEbtNonPclSmokeTestPaid" description="Validate E2E non Ebt order for MAFP Ciao changes (Picking and Staging Using Harvester Native app)" finished-at="2025-06-18T07:05:52 EDT" duration-ms="454387" status="FAIL">
+                </test-method>
+            </class>
+        </test>
+
+        <test started-at="2025-06-18T06:58:13 EDT" name="Web4 Cue: Verify the order picked up and paid status in cue" finished-at="2025-06-18T07:06:06 EDT" duration-ms="473442">
+            <class name="com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest">
+                <test-method signature="validateE2eNonEbtNonPclSmokeTestPaid()[pri:0, instance:com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest@6ee8dcd3]" id="DbPclEnhancedBatchAMREByobAccept" started-at="2025-06-18T06:58:18 EDT" name="validateE2eNonEbtNonPclSmokeTestPaid" description="Verify order picked up and paid for Enhanced Batching db non-EBT pcl byob order (Picking and Staging using Harvester Native app)" finished-at="2025-06-18T07:05:52 EDT" duration-ms="454387" status="FAIL">
+                </test-method>
+            </class>
+        </test>
+
+        <test started-at="2025-06-18T06:58:13 EDT" name="Web4 Cue: Verify the order picked up and paid status in cue" finished-at="2025-06-18T07:06:06 EDT" duration-ms="473442">
+            <class name="com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest">
+                <test-method signature="validateE2eNonEbtNonPclSmokeTestPaid()[pri:0, instance:com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest@6ee8dcd3]" id="NonEBTPclOrderROMBTc52" started-at="2025-06-18T06:58:18 EDT" name="validateE2eNonEbtNonPclSmokeTestPaid" description="Verify Non EBT rush order picked up and paid for TC52 Notification with rush order manual batching (Picking and Staging using Harvester Native app)" finished-at="2025-06-18T07:05:52 EDT" duration-ms="454387" status="FAIL">
+                </test-method>
+            </class>
+        </test>
+
+        <test started-at="2025-06-18T06:58:13 EDT" name="Web4 Cue: Verify the order picked up and paid status in cue" finished-at="2025-06-18T07:06:06 EDT" duration-ms="473442">
+            <class name="com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest">
+                <test-method signature="validateE2eNonEbtNonPclSmokeTestPaid()[pri:0, instance:com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest@6ee8dcd3]" id="InformationLookupOsMovement" started-at="2025-06-18T06:58:18 EDT" name="validateE2eNonEbtNonPclSmokeTestPaid" description="Validate E2E order fulfillment item Movement Pcl Oversize to existing container assigning PCL (Picking and Staging Using Harvester Native app)" finished-at="2025-06-18T07:05:52 EDT" duration-ms="454387" status="FAIL">
+                </test-method>
+            </class>
+        </test>
+
+        <test started-at="2025-06-18T06:58:13 EDT" name="Web4 Cue: Verify the order picked up and paid status in cue" finished-at="2025-06-18T07:06:06 EDT" duration-ms="473442">
+            <class name="com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest">
+                <test-method signature="validateE2eNonEbtNonPclSmokeTestPaid()[pri:0, instance:com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest@6ee8dcd3]" id="AllFulfillmentTypeSingleThread" started-at="2025-06-18T06:58:18 EDT" name="validateE2eNonEbtNonPclSmokeTestPaid" description="Verify E2E non ebt order for various fulfillment types for DyB PCL Single Thread Bulk Staging order (Picking and Staging Using Harvester Native app)" finished-at="2025-06-18T07:05:52 EDT" duration-ms="454387" status="FAIL">
+                </test-method>
+            </class>
+        </test>
+
+        <test started-at="2025-06-18T06:58:13 EDT" name="Web4 Cue: Verify the order picked up and paid status in cue" finished-at="2025-06-18T07:06:06 EDT" duration-ms="473442">
+            <class name="com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest">
+                <test-method signature="validateE2eNonEbtNonPclSmokeTestPaid()[pri:0, instance:com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest@6ee8dcd3]" id="InstacartBaseOrder" started-at="2025-06-18T06:58:18 EDT" name="validateE2eNonEbtNonPclSmokeTestPaid" description="Validate E2E Instacart order fulfillment (Picking and Staging Using Harvester Native app)" finished-at="2025-06-18T07:05:52 EDT" duration-ms="454387" status="FAIL">
+                </test-method>
+            </class>
+        </test>
+
+        <test started-at="2025-06-18T06:58:13 EDT" name="Web4 Cue: Verify the order picked up and paid status in cue" finished-at="2025-06-18T07:06:06 EDT" duration-ms="473442">
+            <class name="com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest">
+                <test-method signature="validateE2eNonEbtNonPclSmokeTestPaid()[pri:0, instance:com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest@6ee8dcd3]" id="DbSingleThreadExpressOrderMoveItemsPreWeighedScreen" started-at="2025-06-18T06:58:18 EDT" name="validateE2eNonEbtNonPclSmokeTestPaid" description="Validate E2E order fulfillment for Item Movement via pre weigh order (Picking and Staging Using Harvester Native app)" finished-at="2025-06-18T07:05:52 EDT" duration-ms="454387" status="FAIL">
+                </test-method>
+            </class>
+        </test>
+
+        <test started-at="2025-06-18T06:58:13 EDT" name="Web4 Cue: Verify the order picked up and paid status in cue" finished-at="2025-06-18T07:06:06 EDT" duration-ms="473442">
+            <class name="com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest">
+                <test-method signature="validateE2eNonEbtNonPclSmokeTestPaid()[pri:0, instance:com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest@6ee8dcd3]" id="DbNineToteHappyPath" started-at="2025-06-18T06:58:18 EDT" name="validateE2eNonEbtNonPclSmokeTestPaid" description="Validate E2E 9 Tote+ pickup order fulfillment (Picking and Staging Using Harvester Native app)" finished-at="2025-06-18T07:05:52 EDT" duration-ms="454387" status="FAIL">
+                </test-method>
+            </class>
+        </test>
+
+        <test started-at="2025-06-18T06:58:13 EDT" name="Web4 Cue: Verify the order picked up and paid status in cue" finished-at="2025-06-18T07:06:06 EDT" duration-ms="473442">
+            <class name="com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest">
+                <test-method signature="validateE2eNonEbtNonPclSmokeTestPaid()[pri:0, instance:com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest@6ee8dcd3]" id="HarrisTeeterDyBSingleThreadBau" started-at="2025-06-18T06:58:18 EDT" name="validateE2eNonEbtNonPclSmokeTestPaid" description="Verify order picked up and paid for HT db pcl order" finished-at="2025-06-18T07:05:52 EDT" duration-ms="454387" status="FAIL">
+                </test-method>
+            </class>
+        </test>
+
+        <test started-at="2025-06-18T06:58:13 EDT" name="Web4 Cue: Verify the order picked up and paid status in cue" finished-at="2025-06-18T07:06:06 EDT" duration-ms="473442">
+            <class name="com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest">
+                <test-method signature="validateE2eNonEbtNonPclSmokeTestPaid()[pri:0, instance:com.krogerqa.web.cases.harvesterWithoutPCL.SmokeEteWebFlowAllFulfilmentTypesNonPclSmokeTest@6ee8dcd3]" id="ScIntegrationBau" started-at="2025-06-18T06:58:18 EDT" name="validateE2eNonEbtNonPclSmokeTestPaid" description="Validate E2E SC MT integration order fulfillment (Picking and Staging Using Harvester Native app)" finished-at="2025-06-18T07:05:52 EDT" duration-ms="454387" status="FAIL">
+                </test-method>
+            </class>
+        </test>
+
+    </suite>
+</testng-results>

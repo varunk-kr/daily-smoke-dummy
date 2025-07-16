@@ -1,0 +1,411 @@
+name: E2e - Individual Test Case Execution
+on:
+  workflow_dispatch:
+    inputs:
+      Groups:
+        description: "Select the suite folder"
+        required: true
+        type: choice
+        options:
+          - smoke
+          - regression
+          - harvesterWithoutPcl
+          - harvesterWithPcl
+          - bulkStagingWithPcl
+          - dynamicBatchingWithoutPcl
+          - dynamicBatchingWithPcl
+          - pclSingleThread
+          - bulkStagingWithoutPcl
+          - rushOrderManualBatchingWithoutPcl
+          - rushOrderManualBatchingWithPcl
+          - rushOrderWithoutPcl
+          - rushOrderWithPcl
+          - enhancedDynamicBatching
+          - mafpCiaoChanges
+          - pclOversize
+          - dynamicBatchingSingleThreadPcl
+          - byob
+          - instacart
+          - dynamicBatchingWithOS
+          - dynamicBatchingExpressOrder
+          - courierServices
+          - harrisTeeterDynamicBatching
+          - dynamicBatchingWeightedTrolley
+          - collapseTemperatureWithPCL
+          - anchorStaging
+          - dynamicBatchingWithNineTote
+      TestCases:
+        description: "Select the suite file"
+        required: true
+        type: choice
+        options:
+          - "smokeNonPclHarrisTeeterFFILLSVCS1506"
+          - "smokeNonPclMultipleOrderFFILLSVCS1750"
+          - "smokePclShiptDeliveryFFILLSVCS2262"
+          - "smokeNonPclSnapEbtAllFulfillmentTypes"
+          - "smokeParallelHarrisTeeterShiptBulkStagingJob1"
+          - "smokeParallelNonPclMultipleOrderMafpJob2"
+          - "smokeParallelPclEnhancedDyBJob3"
+          - "smokeParallelPclSingleThreadJob4"
+          - "smokeParallelPclTc52RombJob5"
+          - "smokeScenarios"
+          - "regressionNonPclAcceptRejectFFILLSVCS1447"
+          - "regressionNonPclCancelFromCiaoFFILLSVCS1507"
+          - "regressionNonPclCancelFromKrogerFFILLSVCS2234"
+          - "regressionNonPclCarryOverTakeOverFFILLSVCS1508"
+          - "regressionNonPclModifyOrderFFILLSVCS2233"
+          - "regressionNonPclNotReadyFFILLSVCS1504"
+          - "regressionNonPclOOSFFILLSVCS1449"
+          - "regressionNonPclSubsShortFFILLSVCS1448"
+          - "regressionNonPclE2eBaseFlowFFILLSVCS1450"
+          - "smokePclAllFulfillmentTypes"
+          - "smokePclModifyCancelFFILLSVCS4563"
+          - "smokePclMovementPreWeighedReToNewReFFILLSVCS4504"
+          - "smokePclNonEbtCarryOverTakeOverFFILLSVCS4539"
+          - "smokePclReusePclFFILLSVCS4566"
+          - "regressionPclPickedOosItemMovementFFILLSVCS12816"
+          - "regressionPclBAUBaseFlowFFILLSVCS4564"
+          - "regressionPclCarryOverOOSFFILLSVCS4560"
+          - "regressionPclModifyOrderFFILLSVCS4561"
+          - "regressionPclMoveFrToExistingFrFFILLSVCS4506"
+          - "regressionPclMoveFrToNewFrFFILLSVCS4481"
+          - "regressionPclMovePickedFrToExistingStagedFrFFILLSVCS4512"
+          - "regressionPclMoveStagedReToExistingPickedAmFFILLSVCS4507"
+          - "regressionPclMoveStagedReToPickedReFFILLSVCS4528"
+          - "regressionPclMultipleOrderTrolleyCancelFFILLSVCS4551"
+          - "regressionPclOOSItemMovementFFILLSVCS4545"
+          - "regressionPclOversizeItemMovementFFILLSVCS4544"
+          - "regressionPclPickedAmToPickedReFFILLSVCS4511"
+          - "regressionPclPreWeighedItemMovementFFILLSVCS4505"
+          - "regressionPclPreWeighedMoveReToExistingReFFILLSVCS4477"
+          - "regressionPclPickedAmToStagedFrFFILLSVCS4509"
+          - "regressionPclStagedAmToPickedFrFFILLSVCS4527"
+          - "regressionPclStagedReToExistingPickedAmFFILLSVCS4507"
+          - "regressionPclSubstitutionItemMovementFFILLSVCS4459"
+          - "regressionPclSubstitutionItemMovementFFILLSVCS4474"
+          - "regressionPclTakeOverInSelectingFFILLSVCS4543"
+          - "regressionPclTakeOverInAssigningFFILLSVCS4529"
+          - "regressionScenarios"
+          - "regressionRushOrderNonPclE2eBauFFILLSVCS6696"
+          - "regressionRushOrderPclE2eBauFFILLSVCS6706"
+          - "regressionRushOrderPclE2eCancelFromCueFFILLSVCS6693"
+          - "regressionRushOrderPclMultipleOrdersFFILLSVCS6685"
+          - "regressionRushOrderPclMultipleOrdersFFILLSVCS6685"
+          - "regressionRushOrderPclNotReadyFFILLSVCS6559"
+          - "regressionDyBAnchorGranularFFILLSVCS9853"
+          - "regressionDyBNonEbtCancelFFILLSVCS5577"
+          - "regressionDyBNonEbtModifyFFILLSVCS5575"
+          - "regressionDyBNonEbtMultipleOrderCancelFFILLSVCS5580"
+          - "regressionDyBNonEbtMultipleOrderFFILLSVCS5578"
+          - "regressionDyBNonEbtOSFRFFILLSVCS5581"
+          - "regressionDyBSnapEbtMultipleOrderFFILLSVCS5583"
+          - "regressionDbPclSingleThreadLargeOrder"
+          - "smokeEnhancedDyBByobAcceptFFILLSVCS10945"
+          - "regressionEnhancedDyBPartialBatchingFFILLSVCS10907"
+          - "criticalEnhancedDyBAnchorGranularOSFRFFILLSVCS10946"
+          - "criticalEnhancedDyBByobAcceptFFILLSVCS10945"
+          - "criticalEnhancedDyBAzureShiptFFILLSVCS10936"
+          - "criticalEnhancedDyBCancelOrderItemMovementFFILLSVCS10942"
+          - "criticalEnhancedDyBCancelRushOrderFFILLSVCS10939"
+          - "criticalEnhancedDyBModifyOrderFFILLSVCS10938"
+          - "criticalEnhancedDyBModifyOrderMoveItemFFILLSVCS10943"
+          - "criticalEnhancedDyBNotReadyAnchorGranularFFILLSVCS10940"
+          - "criticalEnhancedDyBFcStoreCollapseAllFFILLSVCS10947"
+          - "criticalEnhancedDyBOnPremShiptFFILLSVCS10937"
+          - "criticalEnhancedDyBPullAheadFFILLSVCS10949"
+          - "criticalEnhancedDyBRushCombineAllFFILLSVCS10944"
+          - "regressionEnhancedDyBShortOosFFILLSVCS10903"
+          - "regressionEnhancedDyBByobAcceptBagFFILLSVCS10912"
+          - "regressionEnhancedDyBCancelFFILLSVCS10878"
+          - "enhancedDyBSequentialExecution"
+          - "smokeDbSingleThreadPclAllFulfillmentTypesFFILLSVSC12730FFILLSVCS9000FFILLSVCS8832FFILLSVCS8847"
+          - "regressionSingleThreadPclCancelFromCiaoFFILLSVCS9003"
+          - "regressionSingleThreadPclCarryOverFFILLSVCS8813"
+          - "regressionSingleThreadPclChangeBagPrefBYOBRushOrderFFILLSVCS9717"
+          - "regressionSingleThreadPclHarrisTeeterFFILLSVCS9644"
+          - "regressionSingleThreadPclHarrisTeeterMoveItemsOrderLookupFFILLSVCS9714"
+          - "regressionSingleThreadPclHarrisTeeterMoveItemsStagingFFILLSVCS9713"
+          - "regressionSingleThreadPclItemMoveBYOBRushOrderFFILLSVCS9724"
+          - "regressionSingleThreadPclMoveAmToExistingReRushOrderFFILLSVCS9006"
+          - "regressionSingleThreadPclMoveAmToNewAmFFILLSVCS9719"
+          - "regressionSingleThreadPclMoveFrToNewFrFFILLSVCS9716"
+          - "regressionSingleThreadPclMoveMultipleAmToNewAmFFILLSVCS9014"
+          - "regressionSingleThreadPclMoveMultipleFrAmReToNewAnchorStagingRushOrderFFILLSVCS9013"
+          - "regressionSingleThreadPclMoveMultiplePickedFrToNewFFILLSVCS9015"
+          - "regressionSingleThreadPclMoveMultipleReToAmFFILLSVCS9012"
+          - "regressionSingleThreadPclMovePickedAmToStagedReFFILLSVCS9010"
+          - "regressionSingleThreadPclMovePickedFrToExistingAmFFILLSVCS9009"
+          - "regressionSingleThreadPclMovePickedFrToNewFrFFILLSVCS9005"
+          - "regressionSingleThreadPclMovePickedReToStagedReFFILLSVCS9011"
+          - "regressionSingleThreadPclMoveReToExistingFrozenFFILLSVCS9008"
+          - "regressionSingleThreadPclMoveReToExistingReFFILLSVCS9007"
+          - "regressionSingleThreadPclMoveStagedFrToNewFrFFILLSVCS9004"
+          - "regressionSingleThreadPclMultipleRushBYOBFFILLSVCS9720"
+          - "regressionSingleThreadPclNonEbtBauFFILLSVCS8730"
+          - "regressionSingleThreadPclReusePclFFILLSVCS8731"
+          - "regressionSingleThreadPclRushOrderFFILLSVCS9872"
+          - "regressionSingleThreadPclSnapEbtRushOrderFFILLSVCS8729"
+          - "regressionSingleThreadPclTakeOverRunInAssigningFFILLSVCS9001"
+          - "regressionSingleThreadPclMoveItemsToExistingContainerFFILLSVCS9917"
+          - "regressionSingleThreadPclTakeOverRunInSelectingFFILLSVCS9002"
+          - "regressionSingleThreadPclTC52RemoveNotificationsFFILLSVCS9873"
+          - "regressionSingleThreadPclAllFulfillmentTypesFFILLSVCS9000FFILLSVCS8832FFILLSVCS8847"
+          - "criticalBulkStagingNonPclBaseFlowFFILLSVCS11785"
+          - "criticalBulkStagingAnchorStagingFFILLSVCS11714"
+          - "criticalBulkStagingAnchorStagingReToExistingReFFILLSVCS11744"
+          - "criticalBulkStagingByobFFILLSVCS11751"
+          - "criticalBulkStagingItemMovementFrozenToNewFrozenFFILLSVCS11726"
+          - "criticalBulkStagingItemMovementMultipleToNewFFILLSVCS11752"
+          - "criticalBulkStagingItemMovementPickedAmToReFFILLSVCS11753"
+          - "criticalBulkStagingRejectedItemsFFILLSVCS11754"
+          - "criticalBulkStagingShiptDeliveryFFILLSVCS11775"
+          - "criticalBulkStagingSingleThreadPclCarryOverFFILLSVCS11723"
+          - "regressionBulkStagingNonPclShiptOnPremFFILLSVCS11776"
+          - "regressionBulkStagingAnchorStagingCancelOrderFFILLSVCS11725"
+          - "regressionBulkStagingAnchorStagingReToExistingFrFFILLSVCS11748"
+          - "regressionBulkStagingAnchorStagingTakeOverTrolleyFFILLSVCS11715"
+          - "regressionBulkStagingByobShortOOSNRFFILLSVCS11747"
+          - "regressionBulkStagingItemMovementPickedAmToNewAmFFILLSVCS11729"
+          - "regressionBulkStagingItemMovementPickedFRtoPickedAMFFILLSVCS11749"
+          - "regressionBulkStagingItemMoveMultipleReToAmFFILLSVCS11732"
+          - "regressionBulkStagingRestageAnchorGranularFFILLSVCS11745"
+          - "regressionBulkStagingReusePclReStagingFFILLSVCS11728"
+          - "regressionBulkStagingSnapEbtStagingReToExistingReFFILLSVCS11720"
+          - "regressionBulkStagingSubsItemsFFILLSVCS11719"
+          - "regressionBulkStagingTakeOverTrolleyInAssigningFFILLSVCS11713"
+          - "regressionBulkStagingTc52FFILLSVCS11731"
+          - "regressionBulkStagingHarrisTeeterItemMovementFFILLSVCS11786"
+          - "regressionBulkStagingOOSFFILLSVCS11718"
+          - "regressionBulkStagingTC52RemoveNotificationsFFILLSVCS11755"
+          - "regressionBulkStagingAnchorStagingFrToNewFFILLSVCS11746"
+          - "regressionBulkStagingItemMovementMultipleFrozenConatinerToNewFFILLSVCS11733"
+          - "regressionRombWithoutPclMultipleRushAndNormalOrdersFFILLSVCS7131"
+          - "regressionRombWithoutPclMultipleRushAndNormalOrdersInDifferentSlotsFFILLSVCS7140"
+          - "regressionRombWithoutPclMultipleRushAndNormalOrdersInSameSlotFFILLSVCS7120"
+          - "regressionRombWithoutPclMultipleRushInSameSlotCancelOneFFILLSVCS7122"
+          - "regressionRombWithoutPclMultipleRushOrdersInDifferentSlotsFFILLSVCS7123"
+          - "regressionRombWithoutPclNonEbtRushOrderFFILLSVCS7114"
+          - "regressionRombWithPclMultipleRushAndNormalOrdersFFILLSVCS7142"
+          - "smokeTC52RombRushOrderPclE2eBauFFILLSVCS7114"
+          - "smokeMafpCiaoChangesPclE2eBaseFlowFFILLSVCS10464"
+          - "regressionMafpCiaoChangesPclE2eBaseFlowFFILLSVCS10464"
+          - "regressionMafpCiaoChangesNonPclCarryOverServiceCounterItemsFFILLSVCS10432"
+          - "regressionMafpCiaoChangesNonPclPartialFulfillFFILLSVCS10463"
+          - "regressionMafpCiaoChangesNonPclPartialFulfillSellByWeightFFILLSVCS10462"
+          - "regressionMafpCiaoChangesNonPclSellByUnitOrderAdjustmentFFILLSVCS10460"
+          - "regressionMafpCiaoChangesPclCarryOverFFILLSVCS10423"
+          - "regressionMafpCiaoChangesPclModifyOrderFFILLSVCS10434"
+          - "regressionMafpCiaoChangesPclMultipleNonEbtWeightItemsFFILLSVCS10459"
+          - "regressionMafpCiaoChangesPclMultipleSnapEbtWeightItemsFFILLSVCS10461"
+          - "regressionMafpCiaoChangesPclNROutOfStockFFILLSVCS10443"
+          - "regressionMafpCiaoChangesPclOrderAdjusmentFFILLSVCS10458"
+          - "regressionMafpCiaoChangesPclOrderAdjustmentPartialFulfillFFILLSVCS10435"
+          - "regressionMafpCiaoChangesPclOrderAdjustmentSubstituteFFILLSVCS10433"
+          - "regressionMafpCiaoChangesPclOrderAdjustmentSubstitutePackagesFFILLSVCS10448"
+          - "regressionMafpCiaoChangesPclSellByWeightSubstituteFFILLSVCS10442"
+          - "regressionMafpCiaoChangesPclServiceCounterItemsFFILLSVCS10422"
+          - "regressionMafpCiaoChangesPclShiptDeliveryServiceCounterItemsFFILLSVCS10414"
+          - "regressionMafpCiaoChangesPclSubstituteOrderAdjustmentPackagesFFILLSVCS10447"
+          - "smokePclOverSizeMovementOversizeNewFFILLSVCS4568"
+          - "criticalPclOversizeHotItemsFFILLSVCS12217"
+          - "criticalPclOversizeMultipleOrdersAnchorStagingFFILLSVCS12130"
+          - "criticalPclOversizeOutOfStockShortFFILLSVCS12133"
+          - "criticalPclOversizePickedAmToExistingReAnchorStagingFFILLSVCS12171"
+          - "criticalPclOversizePickedOsToNewInformationLookupFFILLSVCS12220"
+          - "criticalPclOversizeReStageAndItemMovementFFILLSVCS12222"
+          - "criticalPclOversizeReStagingOversizeFFILLSVCS12184"
+          - "criticalPclOversizeReusePclFFILLSVCS12088"
+          - "criticalPclOversizeSnapEbtAnchorStagingFFILLSVCS12055"
+          - "criticalPclOversizeStagedOsToNewInformationLookupFFILLSVCS12218"
+          - "criticalPclOversizeStageOsItemsInDifferentLocationsFFILLSVCS12215"
+          - "criticalPclOversizeSubstituteFFILLSVCS12241"
+          - "criticalPclOversizeTakeOverAssigningFFILLSVCS12140"
+          - "criticalPclOversizeSingleThreadOsAndNonOsFFILLSVCS12168"
+          - "criticalPclOversizeStagingUsingToLookupFFILLSVCS12186"
+          - "regressionPclOversizeByobAnchorStagingFFILLSVCS12137"
+          - "regressionPclOversizeCancelFromCiaoFFILLSVCS12136"
+          - "regressionPclOversizeMultipleROMBOrdersFFILLSVCS12132"
+          - "regressionPclOversizePickedFrToExistingStagedFrFFILLSVCS12239"
+          - "regressionPclOversizeSingleThreadIItemMovementOnlyOSItemsFFILLSVCS12170"
+          - "regressionPclOversizeSingleThreadOSToNewFFILLSVCS12172"
+          - "regressionPclOversizeTakeOverItemMovementFFILLSVCS12223"
+          - "regressionPclOversizeE2EBauFlowFFILLSVCS12050"
+          - "regressionPclOversizeFrozenToNewFrozenInformationLookupFFILLSVCS12169"
+          - "regressionPclOversizeMoveItemsViaPickingFFILLSVCS12225"
+          - "regressionBulkStagingItemMovementPickedAmbientToNewFFILLSVCS11730"
+          - "regressionPclOversizeMultipleOrderAndCancelFFILLSVCS12131"
+          - "regressionPclOversizeModifyOrderFFILLSVCS12135"
+          - "regressionPclOversizeMoveAmToExistingAmFFILLSVCS12166"
+          - "regressionPclOversizeBulkStagingFFILLSVCS12248"
+          - "regressionPclOversizePickedToNewFFILLSVCS12216"
+          - "regressionPclOversizeCarryOverFFILLSVCS12134"
+          - "regressionPclOversizeStagedOStoExistingFFILLSVCS12221"
+          - "regressionPclOversizeModifyTakeOverItemMovementInformationLookupFFILLSVCS12165"
+          - "regressionPclOversizeTC52RushOrderBulkStagingPclFFILLSVCS12139"
+          - "regressionPclOversizeFrozenToNewFFILLSVCS12211"
+          - "regressionPclOversizeTakeOverAssigningFFILLSVCS12148"
+          - "regressionPclOversizeReusePclNonOSFFILLSVCS12089"
+          - "regressionDbSingleThreadSameSlotOrdersFFILLSVCS12728"
+          - "regressionDbSingleThreadCarryoverOrderFFILLSVCS12732"
+          - "regressionPclOversizeAmbientToNewInformationLookupFFILLSVCS12199"
+          - "regressionPclOversizeIItemMovementAMToOSViaInfoLookupFFILLSVCS12236"
+          - "regressionDyBNonEbtSingleThreadMultipleOrderFFILLSVCS12727"
+          - "regressionDyBNonEbtSingleThreadMultipleOrderCancelCueTestFFILLSVCS12731"
+          - "regressionDyBNonEbtSingleThreadItemMovementPickedAmbientToNewTestFFILLSVCS12735"
+          - "criticalRegressionPclOversizeProdDefectItemMovement"
+          - "criticalRegressionPCLOSDefectRetestDifferentItems"
+          - "criticalRegressionPclOversizeProdDefectMultipleOrders"
+          - "criticalRegressionPclOversizeProdDefectSameItems"
+          - "regressionByobMultipleOrderCancelCueTestFFILLSVCS7459"
+          - "regressionDbSingleThreadHomeDeliveryFFILLSVCS12761"
+          - "smokeInstacartBauFlowFFILLSVCS12864"
+          - "criticalInstacartBauFlowFFILLSVCS12864"
+          - "criticalDyBOSReusePclFFILLSVCS13629"
+          - "criticalRegressionPclOversizeProdDefectCarryover"
+          - "criticalDyBOSItemMovementFFILLSVCS13618"
+          - "criticalDyBOSCancelFromCueFFILLSVCS13625"
+          - "criticalDyBOSBauFlowFFILLSVCS13617"
+          - "regressionByobItemMovementFromAmToOSFFILLSVCS7463"
+          - "regressionByobAcceptBagFeeAndValidateInHarvesterFFILLSVCS7451"
+          - "regressionByobMultipleOrdersTestFFILLSVCS8529"
+          - "regressionPclOversizeDybFFILLSVCS12224"
+          - "regressionDbSingleThreadModifyOrderFFILSVCS12729"
+          - "criticalInstacartCancelFromCueFFILSVCS12846"
+          - "criticalInstacartHappyPathFlowFFILLSVCS12962"
+          - "criticalInstacartMultiThreadAnchorStagingFlowFFILLSVCS12847"
+          - "regressionByobTakeOverOrderTestFFILLSVCS8528"
+          - "regressionByobItemMovementPickingTestFFILLSVCS7467"
+          - "regressionPclOversizeStageAndItemMovementFFILLSVCS12187"
+          - "criticalInstacartCancelOrderFlowFFILLSVCS12863"
+          - "criticalDbSingleThreadExpressOrderSameSlotsFFILLSVCS14052"
+          - "criticalDbSingleThreadExpressAndNormalDifferentSlotFFILLSVCS14058"
+          - "criticalDbSingleThreadExpressOrderCancelFFILLSVCS14046"
+          - "criticalDbSingleThreadExpressAndNormalOrderDifferentSlots14054"
+          - "regressionPclOversizeByobItemMovementFFILLSVCS12138"
+          - "regressionByobSnapEbtOrderTestFFILLSVCS7452"
+          - "criticalDyBOSModifyOrderFFILLSVCS13624"
+          - "regressionByobOOSandShortingTestFFILLSVCS7453"
+          - "smokeExpressOrderPclMovementPreWeighedReToNewReFFILLSVCS4504"
+          - "regressionPclShiptOnPremWithAlcoholFFILLSVCS9593"
+          - "regressionPclShiptOnPremWithoutAlcoholFFILLSVCSTC9592"
+          - "regressionPclShiptOnPremWithAlcoholCancelFFILLSVCS9601"
+          - "regressionDyBOSFrOneTrolleyFFILLSVCS13616"
+          - "regressionDyBOSItemMovementViaStagingFFILLSVCS13619"
+          - "regressionByobSubstitutionAndItemMovementFFILLSVCS7465"
+          - "regressionDbSingleThreadExpressOrdersFFILLSVCS14047"
+          - "regressionDbSingleThreadExpressModifyOrderFFILLSVCS14041"
+          - "regressionDbExpressOrderTwoWaySubsNRItem14050"
+          - "regressionDyBOSCarryOverFFILLSVCS13623"
+          - "regressionDyBOSHotOSSubstitutionFFILLSVCS13620"
+          - "regressionByobItemMovementFromAmToExistingOrderLookupFFILLSVCS7464"
+          - "regressionInstacartCancelBeforePickingFromCueFFILLSVCS12845"
+          - "regressionByobMoveItemsFromPreweighScreenTestFFILLSVCS7471"
+          - "regressionByobAcceptBagFeeAndCancelFromKrogerFFILLSVCS7455"
+          - "regressionByobItemMovementAndChangeBagPreferenceTestFFILLSVCS7468"
+          - "regressionDyBExpressOrderWithOSFFILLSVCS14040"
+          - "regressionInstacartMultipleOrdersCancelOneFFILLSVCS12862"
+          - "regressionPclHarrisTeeterDyBOrderLookupFFILLSVCS14380"
+          - "criticalDbExpressOrderTC52NotificationFFILLSVCS14051"
+          - "regressionPclHarrisTeeterDyBPickingItemMovementFFILLSVCS14370"
+          - "regressionHTDbSingleThreadBauFFILLSVCS14375"
+          - "regressionNonPclHarrisTeeterFFILLSVCS14373"
+          - "regressionHarrisTeeterFFILLSVCS14372"
+          - "regressionHarrisTeeterModifyFFILLSVCS14376"
+          - "regressionPclDbWeightedTrolleyMultipleOrdersFFILLSVCS13139"
+          - "regressionByobAcceptBagFeeAndExpressOrderFFILLSVCS9172"
+          - "regressionHarrisTeeterPclDybFFILLSVCS14379"
+          - "regressionPclCollapseTempWithAMRegularItemsFFILLSVCS5500"
+          - "regressionPclAnchorStagingCancelOrderAfterStagingOneContainerFFILLSVCS5314"
+          - "regressionByobItemMovementAllFRToFRFFILLSVCS7462"
+          - "regressionByobAllItemsOOSFFILLSVCS9170"
+          - "regressionByobTwoWaySubsFFILLSVCS7460"
+          - "regressionHTDyBModifyOrderFFILLSVCS14378"
+          - "regressionPCLHarrisTeeterDyBHappyPathFFILLSVCS14374"
+          - "regressionByobSubstitutionAndNRItemTestFFILLSVCS7461"
+          - "regressionDbWeightedTrolleyFFILLSVCS13140"
+          - "regressionByobPartiallyFulfilledAndSubstitutionFFILLSVCS7454"
+          - "criticalDyBNineToteHappyPathTest15066"
+          - "critical9ToteWithDyBOSCombinedOSFRTrolleyFlow15068"
+          - "criticalDyBNineToteOSPureTrolleyFlowFFILLSVCS15067"
+          - "criticalDyBNineToteModifyOrderTestFFILLSVCS15073"
+          - "regressionAnchorStagingCancelTC5313"
+          - "regressionAnchorStagingItemsOOSTC5317"
+          - "regressionAnchorStagingSubsShortTC5315"
+          - "regressionAnchorStagingShiptDeliveryTC5323"
+          - "criticalInstacartMultipleOrderFFILLSVCS12963"
+          - "regressionCollapseTemperatureWithPclMoveFrToNewFrFFILLSVCS5493"
+          - "regressionCollapseTemperatureWithPclFrAndReContainersFFILLSVCS5492"
+          - "regressionCollapseTempWithPclOnlyOSContainersTestFFILLSVCS5504"
+          - "regressionCollapseTempWithPclItemMovementViaOrderlookupTestFFILLSVCS5762"
+          - "regressionByobExpressAndNormalOrderTestFFILLSVC9083"
+          - "DybNineToteOSPlusDisabledFlowFFILLSVCS15083"
+          - "smokeScIntegrationBauFlowFFILLSVCS14431"
+          - "smokeHTDbSingleThreadBauFFILLSVCS14375"
+          - "smokeDyBNineToteHappyPathTest15066"
+          - "regressionDyBNineToteMultipleCancelOrderTest15081"
+      Harvester:
+        description: "Select the harvester version"
+        required: true
+        type: choice
+        options:
+          - 5.7.4
+          - 5.20.1
+          - 5.27.0
+      Ciao:
+        description: "Select the ciao version"
+        required: true
+        type: choice
+        options:
+          - 2.39.debug.480
+          - 3.1-debug.492
+          - 3.4-debug.510
+env:
+  ARTIFACTORY_EDGE_USERNAME_REF: ${{ secrets.ARTIFACTORY_EDGE_USERNAME }}
+  ARTIFACTORY_EDGE_TOKEN_REF: ${{ secrets.ARTIFACTORY_EDGE_TOKEN }}
+  TZ: 'America/New_York'
+jobs:
+  run_automation_tests:
+    name: Run automation tests with Maven
+    runs-on: [ self-hosted,kubernetes ]
+    container: maven:3.8.5-openjdk-11
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
+      - name: Set up JDK 21
+        uses: actions/setup-java@v2
+        with:
+          java-version: "21"
+          distribution: temurin
+          overwrite-settings: true
+      - name: Cache local Maven repository
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      - name: Run automation tests with xml file
+        run: >-
+          mvn clean test --settings settings.xml -DsuiteFolder="${{ github.event.inputs.Groups }}" -Dsuite="${{ github.event.inputs.TestCases }}"  -Dreportportal="true" -Dlaunch-name="${{ github.event.inputs.TestCases }}" -Dbranch=${BRANCH_NAME} -DHARVESTER_VERSION="${{ github.event.inputs.Harvester }}" -DCIAO_VERSION="${{ github.event.inputs.Ciao }}"
+
+        id: scenario_1
+        # continue-on-error: true
+        if: ${{ ! cancelled() }}
+      - name: Upload logs and extent
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Logs_and_Extent_Reports
+          path: |
+            target/Logs/*
+            test-output/Reports/
+          if-no-files-found: ignore
+
+      - name: Publish surefire test report scenario_1
+        if: ${{ always() }}
+        uses: scacap/action-surefire-report@v1
+        with:
+          report_paths: "**/surefire-reports/TEST-*.xml"

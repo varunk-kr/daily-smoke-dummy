@@ -1,0 +1,163 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Fulfillment ETE" >
+    <listeners>
+        <listener class-name="com.krogerqa.seleniumcentral.framework.listeners.ExtentTestNGIReporterListener"/>
+        <listener class-name="com.krogerqa.seleniumcentral.framework.listeners.TestNG_ConsoleRunner"/>
+    </listeners>
+
+    <test name="Order creation and New order validation in Cue for 9713" parallel="methods" thread-count="999">
+        <parameter name="grid" value="selenoidGrid"/>
+        <parameter name="platform" value="Linux"/>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browserVersion" value="latest"/>
+        <parameter name="url" value="https://www-stage.kroger.com/signin"/>
+        <parameter name="wait" value="60"/>
+        <parameter name="logging" value="info"/>
+        <parameter name="driverType" value="browser"/>
+        <parameter name="highlight" value="false"/>
+        <parameter name="retryFailedTests" value="0"/>
+        <groups>
+            <run>
+                <include name="ete_singleThread_pcl_tc_9713_web_part1_nonEbt_harrisTeeter"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.web.cases.singleThreadWithPCL"/>
+        </packages>
+    </test>
+
+    <test name="Selecting using Harvester Native for 9713" parallel="methods" thread-count="999">
+        <parameter name="grid" value="mobileGrid"/>
+        <parameter name="udid" value="emulator-5554"/>
+        <parameter name="mobilePlatformName" value="android"/>
+        <parameter name="mobilePlatformVersion" value="10"/>
+        <parameter name="deviceType" value="emulator"/>
+        <parameter name="appiumPort" value="4444"/>
+        <parameter name="driverType" value="appium"/>
+        <parameter name="fullReset" value="true"/>
+        <parameter name="wait" value="60"/>
+        <parameter name="singleSessionSuite" value="false"/>
+        <parameter name="androidApkPackage" value="com.android.chrome" />
+        <parameter name="androidApkActivity" value="org.chromium.chrome.browser.firstrun.FirstRunActivity" />
+        <parameter name="androidApkPath" value="/builds/harvester-stage-3.88.0-debug.apk"/>
+        <groups>
+            <run>
+                <include name="ete_singleThread_pcl_tc_9713_native_part1_nonEbt_harrisTeeter" />
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.mobile.cases.singleThreadWithPCL"/>
+        </packages>
+    </test>
+
+    <test name="Picked status validation in Cue for 9713" parallel="methods" thread-count="999">
+        <parameter name="grid" value="selenoidGrid"/>
+        <parameter name="platform" value="Linux"/>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browserVersion" value="latest"/>
+        <parameter name="url" value="https://ecsb-stage.kroger.com/cue/01400413/orders"/>
+        <parameter name="wait" value="30"/>
+        <parameter name="logging" value="info"/>
+        <parameter name="driverType" value="browser"/>
+        <parameter name="highlight" value="false"/>
+        <parameter name="retryFailedTests" value="0"/>
+        <groups>
+            <run>
+                <include name="ete_singleThread_pcl_tc_9713_web_part2_nonEbt_harrisTeeter"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.web.cases.singleThreadWithPCL"/>
+        </packages>
+    </test>
+
+    <test name="Staging Harvester native for 9713" parallel="methods" thread-count="999">
+        <parameter name="grid" value="mobileGrid"/>
+        <parameter name="udid" value="emulator-5554"/>
+        <parameter name="mobilePlatformName" value="android"/>
+        <parameter name="mobilePlatformVersion" value="10"/>
+        <parameter name="deviceType" value="emulator"/>
+        <parameter name="appiumPort" value="4444"/>
+        <parameter name="driverType" value="appium"/>
+        <parameter name="fullReset" value="true"/>
+        <parameter name="wait" value="60"/>
+        <parameter name="singleSessionSuite" value="false"/>
+        <parameter name="androidApkPackage" value="com.android.chrome" />
+        <parameter name="androidApkActivity" value="org.chromium.chrome.browser.firstrun.FirstRunActivity" />
+        <parameter name="androidApkPath" value="/builds/harvester-stage-3.88.0-debug.apk"/>
+        <groups>
+            <run>
+                <include name="ete_singleThread_pcl_tc_9713_native_part2_nonEbt_harrisTeeter" />
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.mobile.cases.singleThreadWithPCL"/>
+        </packages>
+    </test>
+
+    <test name="Staged status in Cue, Customer Checkin and Order in Dash for 9713" parallel="methods" thread-count="999">
+        <parameter name="grid" value="selenoidGrid"/>
+        <parameter name="platform" value="Linux"/>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browserVersion" value="latest"/>
+        <parameter name="url" value="https://ecsb-stage.kroger.com/cue/01400413/orders"/>
+        <parameter name="wait" value="30"/>
+        <parameter name="logging" value="info"/>
+        <parameter name="driverType" value="browser"/>
+        <parameter name="highlight" value="false"/>
+        <parameter name="retryFailedTests" value="0"/>
+        <groups>
+            <run>
+                <include name="ete_singleThread_pcl_tc_9713_web_part3_nonEbt_harrisTeeter"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.web.cases.singleThreadWithPCL"/>
+        </packages>
+    </test>
+
+    <test name="Destaging and checkout using Ciao native for 9713" parallel="methods" thread-count="999">
+        <parameter name="grid" value="mobileGrid"/>
+        <parameter name="udid" value="emulator-5554"/>
+        <parameter name="mobilePlatformName" value="android"/>
+        <parameter name="mobilePlatformVersion" value="10"/>
+        <parameter name="deviceType" value="emulator"/>
+        <parameter name="appiumPort" value="4444"/>
+        <parameter name="driverType" value="appium"/>
+        <parameter name="fullReset" value="false"/>
+        <parameter name="wait" value="60"/>
+        <parameter name="singleSessionSuite" value="false"/>
+        <parameter name="androidApkPackage" value="com.kroger.ecommpos.ciao"/>
+        <parameter name="androidApkActivity" value="com.kroger.ecommpos.authentication.impl.LoginActivity"/>
+        <parameter name="androidApkPath" value="/builds/Ciao-2.28.debug.425.apk"/>
+        <groups>
+            <run>
+                <include name="ete_singleThread_pcl_tc_9713_native_part3_nonEbt_harrisTeeter" />
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.mobile.cases.singleThreadWithPCL"/>
+        </packages>
+    </test>
+
+    <test name="Picked up and paid status validation in Cue and Klog validation for 9713" parallel="methods" thread-count="999">
+        <parameter name="grid" value="selenoidGrid"/>
+        <parameter name="platform" value="Linux"/>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browserVersion" value="latest"/>
+        <parameter name="url" value="https://ecsb-stage.kroger.com/dash/?facilityCode=01400413"/>
+        <parameter name="wait" value="30"/>
+        <parameter name="logging" value="info"/>
+        <parameter name="driverType" value="browser"/>
+        <parameter name="highlight" value="false"/>
+        <parameter name="retryFailedTests" value="0"/>
+        <groups>
+            <run>
+                <include name="ete_singleThread_pcl_tc_9713_web_part4_nonEbt_harrisTeeter"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.web.cases.singleThreadWithPCL"/>
+        </packages>
+    </test>
+</suite>

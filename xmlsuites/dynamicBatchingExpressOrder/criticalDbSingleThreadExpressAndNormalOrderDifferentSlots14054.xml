@@ -1,0 +1,214 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Regression ETE" parallel="false" thread-count="1" group-by-instances="true">
+    <listeners>
+        <listener class-name="com.krogerqa.seleniumcentral.framework.listeners.ExtentTestNGIReporterListener"/>
+        <listener class-name="com.krogerqa.seleniumcentral.framework.listeners.TestNG_ConsoleRunner"/>
+        <listener class-name="com.epam.reportportal.testng.ReportPortalTestNGListener"/>
+    </listeners>
+
+    <test name="Web1-KCP: Validate new order creation via KSP for Express and normal order">
+        <parameter name="grid" value="selenoidGrid"/>
+        <parameter name="platform" value="Linux"/>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browserVersion" value="latest"/>
+        <parameter name="url" value="https://www-stage.kroger.com/signin"/>
+        <parameter name="wait" value="50"/>
+        <parameter name="logging" value="info"/>
+        <parameter name="driverType" value="browser"/>
+        <parameter name="highlight" value="false"/>
+        <parameter name="retryFailedTests" value="0"/>
+        <parameter name="singleSessionSuite" value="true"/>
+        <groups>
+            <run>
+                <include name="ete_db_expressOrder_tc_14054_singleThread_web_part1_nonEbt"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.web.cases.dynamicBatchingExpressOrder"/>
+        </packages>
+    </test>
+
+    <test name="Native1-Harvester:Request trolleys from harvester for express and normal orders">
+        <parameter name="grid" value="mobileGrid"/>
+        <parameter name="udid" value="emulator-5554"/>
+        <parameter name="mobilePlatformName" value="android"/>
+        <parameter name="mobilePlatformVersion" value="10"/>
+        <parameter name="deviceType" value="emulator"/>
+        <parameter name="appiumPort" value="4444"/>
+        <parameter name="driverType" value="appium"/>
+        <parameter name="fullReset" value="false"/>
+        <parameter name="wait" value="70"/>
+        <parameter name="singleSessionSuite" value="false"/>
+        <parameter name="androidApkPackage" value="com.android.chrome"/>
+        <parameter name="androidApkActivity" value="org.chromium.chrome.browser.firstrun.FirstRunActivity"/>
+        <parameter name="androidApkPath" value="${HARVESTER_VERSION}"/>
+        <groups>
+            <run>
+                <include name="ete_db_pcl_tc_14054_singleThread_native_part1_nonEbt"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.mobile.cases.dynamicBatchingExpressOrder"/>
+        </packages>
+    </test>
+
+    <test name="Web2-Cue: Verify the order is batched in Cue">
+        <parameter name="grid" value="selenoidGrid"/>
+        <parameter name="platform" value="Linux"/>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browserVersion" value="latest"/>
+        <parameter name="url" value="https://ecsb-stage.kroger.com/cue/01400413/orders"/>
+        <parameter name="wait" value="50"/>
+        <parameter name="logging" value="info"/>
+        <parameter name="driverType" value="browser"/>
+        <parameter name="highlight" value="false"/>
+        <parameter name="retryFailedTests" value="0"/>
+        <parameter name="singleSessionSuite" value="true"/>
+        <groups>
+            <run>
+                <include name="ete_db_expressOrder_tc_14054_singleThread_web_part2_nonEbt"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.web.cases.dynamicBatchingExpressOrder"/>
+        </packages>
+    </test>
+
+    <test name="Native2-Harvester: Validate the order selecting process in Harvester for express and normal orders">
+        <parameter name="grid" value="mobileGrid"/>
+        <parameter name="udid" value="emulator-5554"/>
+        <parameter name="mobilePlatformName" value="android"/>
+        <parameter name="mobilePlatformVersion" value="10"/>
+        <parameter name="deviceType" value="emulator"/>
+        <parameter name="appiumPort" value="4444"/>
+        <parameter name="driverType" value="appium"/>
+        <parameter name="fullReset" value="false"/>
+        <parameter name="wait" value="70"/>
+        <parameter name="singleSessionSuite" value="false"/>
+        <parameter name="androidApkPackage" value="com.android.chrome"/>
+        <parameter name="androidApkActivity" value="org.chromium.chrome.browser.firstrun.FirstRunActivity"/>
+        <parameter name="androidApkPath" value="${HARVESTER_VERSION}"/>
+        <groups>
+            <run>
+                <include name="ete_db_pcl_tc_14054_singleThread_native_part2_nonEbt"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.mobile.cases.dynamicBatchingExpressOrder"/>
+        </packages>
+    </test>
+
+    <test name="Web3-Cue: Verify the Order picked status in Cue for express and normal order">
+        <parameter name="grid" value="selenoidGrid"/>
+        <parameter name="platform" value="Linux"/>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browserVersion" value="latest"/>
+        <parameter name="url" value="https://ecsb-stage.kroger.com/cue/01400413/orders"/>
+        <parameter name="wait" value="50"/>
+        <parameter name="logging" value="info"/>
+        <parameter name="driverType" value="browser"/>
+        <parameter name="highlight" value="false"/>
+        <parameter name="retryFailedTests" value="0"/>
+        <parameter name="singleSessionSuite" value="true"/>
+        <groups>
+            <run>
+                <include name="ete_db_expressOrder_tc_14054_singleThread_web_part3_nonEbt"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.web.cases.dynamicBatchingExpressOrder"/>
+        </packages>
+    </test>
+
+    <test name="Native3-Harvester: Validate the order staging process in Harvester for express and normal orders">
+        <parameter name="grid" value="mobileGrid"/>
+        <parameter name="udid" value="emulator-5554"/>
+        <parameter name="mobilePlatformName" value="android"/>
+        <parameter name="mobilePlatformVersion" value="10"/>
+        <parameter name="deviceType" value="emulator"/>
+        <parameter name="appiumPort" value="4444"/>
+        <parameter name="driverType" value="appium"/>
+        <parameter name="fullReset" value="false"/>
+        <parameter name="wait" value="70"/>
+        <parameter name="singleSessionSuite" value="false"/>
+        <parameter name="androidApkPackage" value="com.android.chrome"/>
+        <parameter name="androidApkActivity" value="org.chromium.chrome.browser.firstrun.FirstRunActivity"/>
+        <parameter name="androidApkPath" value="${HARVESTER_VERSION}"/>
+        <groups>
+            <run>
+                <include name="ete_db_pcl_tc_14054_singleThread_native_part3_nonEbt"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.mobile.cases.dynamicBatchingExpressOrder"/>
+        </packages>
+    </test>
+
+    <test name="Web4-Cue: Verify the Order Staged status in Cue for express and normal order">
+        <parameter name="grid" value="selenoidGrid"/>
+        <parameter name="platform" value="Linux"/>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browserVersion" value="latest"/>
+        <parameter name="url" value="https://ecsb-stage.kroger.com/cue/01400413/orders"/>
+        <parameter name="wait" value="50"/>
+        <parameter name="logging" value="info"/>
+        <parameter name="driverType" value="browser"/>
+        <parameter name="highlight" value="false"/>
+        <parameter name="retryFailedTests" value="0"/>
+        <parameter name="singleSessionSuite" value="true"/>
+        <groups>
+            <run>
+                <include name="ete_db_expressOrder_tc_14054_singleThread_web_part4_nonEbt"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.web.cases.dynamicBatchingExpressOrder"/>
+        </packages>
+    </test>
+
+    <test name="Native4-Ciao: Validate the order de staging process in ciao for express and normal order">
+        <parameter name="grid" value="mobileGrid"/>
+        <parameter name="udid" value="emulator-5554"/>
+        <parameter name="mobilePlatformName" value="android"/>
+        <parameter name="mobilePlatformVersion" value="10"/>
+        <parameter name="deviceType" value="emulator"/>
+        <parameter name="appiumPort" value="4444"/>
+        <parameter name="driverType" value="appium"/>
+        <parameter name="fullReset" value="false"/>
+        <parameter name="wait" value="80"/>
+        <parameter name="singleSessionSuite" value="false"/>
+        <parameter name="androidApkPackage" value="com.kroger.ecommpos.ciao"/>
+        <parameter name="androidApkActivity" value="com.kroger.ecommpos.authentication.impl.LoginActivity"/>
+        <parameter name="androidApkPath" value="${CIAO_VERSION}"/>
+        <groups>
+            <run>
+                <include name="ete_db_pcl_tc_14054_singleThread_native_part4_nonEbt"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.mobile.cases.dynamicBatchingExpressOrder"/>
+        </packages>
+    </test>
+
+    <test name="Web5 Cue: Verify the order picked up and paid status in cue for express and normal order">
+        <parameter name="grid" value="selenoidGrid"/>
+        <parameter name="platform" value="Linux"/>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="browserVersion" value="latest"/>
+        <parameter name="url" value="https://ecsb-stage.kroger.com/dash/?facilityCode=01400413"/>
+        <parameter name="wait" value="50"/>
+        <parameter name="logging" value="info"/>
+        <parameter name="driverType" value="browser"/>
+        <parameter name="highlight" value="false"/>
+        <parameter name="retryFailedTests" value="0"/>
+        <parameter name="singleSessionSuite" value="true"/>
+        <groups>
+            <run>
+                <include name="ete_db_expressOrder_tc_14054_singleThread_web_part5_nonEbt"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.krogerqa.web.cases.dynamicBatchingExpressOrder"/>
+        </packages>
+    </test>
+</suite>

@@ -1,0 +1,39 @@
+testcase_name,capability,test_domain
+validateE2eHarrisTeeterOrderStaged,Create Staging Container|Stage Container in Back Room,Enterprise-Staging
+validateE2eNativeHarrisTeeterOrderStaging,Create Trolley|Set Anchor Staging route|Consume Container from Completed Trolley Run|Move Item to New Container,Enterprise-Staging
+validateE2eNativeHarrisTeeterOrderCheckout,De-stage Order to Palley|Remove Container for Cancelled Order from Staging,Enterprise-Staging
+validateE2eMultipleOrdersStaging,Create Trolley|Set wave staging route|Consume Container from Completed Trolley Run|Move Item to New Container,Enterprise-Staging
+validateE2eMultipleOrdersStaged,Create Staging Container|Stage Container in Back Room,Enterprise-Staging
+validateE2eMultipleOrdersCheckout,De-stage Order to Palley|Remove Container for Cancelled Order from Staging,Enterprise-Staging
+validatePclFulfillmentTypesSmokeTestOrderStaging,Create Trolley|Set Anchor Staging route|Consume Container from Completed Trolley Run|Move Item to New Container,Enterprise-Staging
+validatePclFulfillmentTypesSmokeTestOrderStaging,Create Trolley|Set Anchor Staging route|Consume Container from Completed Trolley Run|Move Item to New Container,Enterprise-Staging
+validatePclFulfillmentTypesSmokeTestOrderNrContainerStaging,Handle Container with Item(s) Not Ready|Add Service Counter Item to Container,Enterprise-Staging
+validatePclFulfillmentTypesSmokeTestOrderStaged,Create Staging Container|Stage Container in Back Room,Enterprise-Staging
+validatePclFulfillmentTypesSmokeTestOrderCheckout,De-stage Order to Palley|Remove Container for Cancelled Order from Staging,Enterprise-Staging
+validateE2eNonEbtPclItemMovementViaPreWeighedOrderStaging,Create Trolley|Set wave staging route|Consume Container from Completed Trolley Run|Move Item to New Container,Enterprise-Staging
+validateE2eNonEbtPclItemMovementViaPreWeighedOrderStaged,Create Staging Container|Stage Container in Back Room,Enterprise-Staging
+validateE2eNonEbtPclItemMovementViaPreWeighedOrderCheckout,De-stage Order to Palley|Remove Container for Cancelled Order from Staging,Enterprise-Staging
+validateNewOSContainerMovementLookupScreenOrderStaging,Create Trolley|Set wave staging route|Consume Container from Completed Trolley Run|Move Item to New Container,Enterprise-Staging
+validateNewOSContainerMovementLookupScreenOrderStaged,Create Staging Container|Stage Container in Back Room,Enterprise-Staging
+validateNewOSContainerMovementLookupScreenOrderCheckout,De-stage Order to Palley|Remove Container for Cancelled Order from Staging,Enterprise-Staging
+validateE2eTC52NonEbtStaged,Create Staging Container|Stage Container in Back Room,Enterprise-Staging
+validateE2eTC52NonEbtPclStaging,Create Trolley|Set wave staging route|Consume Container from Completed Trolley Run|Move Item to New Container,Enterprise-Staging
+validateE2eTC52NonEbtCheckout,De-stage Order to Palley|Remove Container for Cancelled Order from Staging,Enterprise-Staging
+validateE2eDbPclByobOrderCheckout,De-stage Order to Palley|Remove Container for Cancelled Order from Staging,Enterprise-Staging
+validateE2eEnhancedBatchingPclByobOrderStaged,Create Staging Container|Stage Container in Back Room,Enterprise-Staging
+validateE2eDbPclByobOrderStaging,Create Trolley|Set wave staging route|Consume Container from Completed Trolley Run|Move Item to New Container,Enterprise-Staging
+validatePclFulfillmentTypesSmokeSingleOrderTestOrderStaging,Create Trolley|Set wave staging route|Consume Container from Completed Trolley Run|Move Item to New Container,Enterprise-Staging
+validatePclFulfillmentTypesSmokeSingleOrderTestOrderStaged,Create Staging Container|Stage Container in Back Room,Enterprise-Staging
+validatePclFulfillmentTypesSmokeTestOrderPicked,Select Items and Scan to Container|Mark Item Out of Stock|Handle / Assign Items to Container|Manage Service Counter Item|Substitute an Item,Picking-Selection
+validateE2eNonEbtModifyCancelOrderPicked,Select Items and Scan to Container|Handle / Assign Items to Container,Picking-Selection
+validateE2eNonEbtReusePclOrderPicked,Select Items and Scan to Container|Handle / Assign Items to Container,Picking-Selection
+validateE2eTakeOverTrolleyPclOrderPicked,Select Items and Scan to Container|Handle / Assign Items to Container,Picking-Selection
+validateE2eNonEbtNonPclSmokeTestPicked,Select Items and Scan to Container|Handle / Assign Items to Container,Picking-Selection
+validateE2eHarrisTeeterOrderPicked,Select Items and Scan to Container|Handle / Assign Items to Container,Picking-Selection
+validateE2eMultipleOrdersPicked,Select Items and Scan to Container|Handle / Assign Items to Container,Picking-Selection
+validateE2eNonEbtShiptOrderPicked,Select Items and Scan to Container|Handle / Assign Items to Container,Picking-Selection
+validateNewOSContainerMovementLookupScreenOrderPicked,Select Items and Scan to Container|Handle / Assign Items to Container|Move Items from Container / Swap Containers,Picking-Selection
+validateE2eTC52NonEbtPicked,Select Items and Scan to Container|Handle / Assign Items to Container,Picking-Selection
+validateE2ePclPclMafpCiaoChangesOrderPicked,Select Items and Scan to Container|Handle / Assign Items to Container,Picking-Selection
+validateE2eNonEbtPclItemMovementViaPreWeighedOrderPicked,Select Items and Scan to Container|Handle / Assign Items to Container,Picking-Selection
+validatePclFulfillmentTypesSmokeSingleOrderTestOrderPicked,Select Items and Scan to Container|Mark Item Out of Stock|Handle / Assign Items to Container|Manage Service Counter Item|Substitute an Item,Picking-Selection

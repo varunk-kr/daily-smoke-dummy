@@ -1,0 +1,84 @@
+{
+  "testData": {
+    "environment": "Stage",
+    "krogerSeamlessUrl": "https://www-stage.kroger.com/signin",
+    "cueUrl": "https://ecsb-stage.kroger.com/cue/storeNo/orders",
+    "pickRunUtilityUrl": "http://selection-toolbox.kroger.com/pickrunutility",
+    "harvesterUrl": "https://api-ce.kroger.com/v1/krogerco/harvester/",
+    "dashUrl": "https://ecsb-stage.kroger.com/dash/?facilityCode=storeNo",
+    "controlTowerUrl": "https://controltower-app-stage.clttwr-stage.kpsazc.dgtl.kroger.com/controltower/orders/",
+    "oktaSignInUrl": "https://kroger.oktapreview.com/",
+    "harrisTeeterUrl": "https://www-stage.harristeeter.com/signin",
+    "spmUser": ["username", "password"],
+    "substituteApiAuth": ["username", "password"],
+    "seamlessCustomers": {
+      "user1": ["fulfillmentete1@gmail.com", "ete@fulfillment1", "481273816879"],
+      "user2": ["fulfillmentete2@gmail.com", "ete@fulfillment2", "481273818903"],
+      "user3": ["fulfillmentete3@gmail.com", "ete@fulfillment3", "481273822481"],
+      "user4": ["fulfillmentete4@gmail.com", "ete@fulfillment4", "481286053001"],
+      "user5": ["fulfillmentete5@gmail.com", "ete@fulfillment5", "481286053216"],
+      "user7": ["fulfillmentete7@gmail.com", "ete@fulfillment7", "481288887369"],
+      "user6.1": ["fulfillmentete6.1@gmail.com","ete@fulfillment6.1","481299180503"],
+      "user6.2": ["fulfillmentete6.2@gmail.com","ete@fulfillment6.2","481299180503"],
+      "user8": ["fulfillmenttestete8ht@gmail.com", "etetest@fulfillment8", "468789094021"],
+      "user9": ["fulfillmentete9@gmail.com", "ete@fulfillment9", "481298482981", "Fulfilment", "e2e9"],
+      "user11": ["fulfillmentete11@gmail.com", "ete@fulfillment11", "481299017540"],
+      "user12": ["fulfillmentete12@gmail.com", "ete@fulfillment12", "481302118035"],
+      "user13": ["fulfillmentete13@gmail.com", "ete@fulfillment13","481302226556"]
+    },
+    "storeInfo": {
+      "store_multiOrder": ["Loveland", "45140", "014", "413"],
+      "store_singleOrder": ["Test for Fuel Pay Ci\"42\"", "45202", "014", "042"],
+      "store_harrisTeeter": ["Rea Farms Shopping Center", "28277", "097", "440"],
+      "store_cancelOrder": ["Pierce Township Marketplace", "45102", "014", "468"],
+      "store_modifyOrder": ["Monroe", "45050", "014", "336"],
+      "store_nuroDelivery": ["5435 S Braeswood Blvd", "77096", "034", "313"],
+      "store_shiptDelivery": ["3200 W Bay Area Blvd", "77546", "034", "744"]
+    },
+    "itemsUpcQty": {
+      "scenario1": [["0001820096715", "1"], ["0001111050719", "2"], ["0002840058929", "2"], ["0001111042852", "2"]],
+      "scenario2": [["0004900004284", "1"], ["0000000003283", "3", "Sell By Weight"], ["0007790050192", "2"], ["0007199009511", "2"], ["0002550081123", "2"]],
+      "scenario3": [["0081829001283", "2", "Out Of Stock"], ["0001380010340", "3", "Shorted"], ["0000000094011", "5", "Sell By Weight"], ["0003410057306", "1"]],
+      "scenario4": [["0007199031600", "1"], ["0001800000182", "2", "Substitute1", "0001800000183", "true", "Override"], ["0004154824404", "2", "SubstituteShort", "0004154861004", "true", "Override"], ["0000000004072", "2", "Sell By Weight"]],
+      "scenario5": [["0001380010342", "2","Substitute1", "0001380044784","false"],["0001111042850", "2","Substitute2","0001111050075", "true"],["0000000004662", "5", "Sell By Weight"],["0001820053047","1"]],
+      "scenario6": [["0001820096715", "1"],["0001111050719","1"],["0001111042852","1"]],
+      "scenario7": [["0008066095680", "1"],["0007790050192","2"],["0007199009511","1"],["0002550081123","2"]],
+      "scenario8": [["0008066095680", "1"],["0007790050192","2"],["0000000004136","1","Sell By Weight"],["0007341095684","2"],["0004900001278","1"]],
+      "scenario9": [["0003410057306", "1", "Miller Lite American Light Lager Beer", "USD 23.99"],["0001800000338", "1","Pillsbury Classic Pizza Crust", "USD 4.49", "Out Of Stock"],["0002370002847", "1", "Tyson Fully Cooked Chicken Nuggets", "USD 7.99", "Carryover"],["0074840428794", "1","Seeds of Change Organic Quinoa & Brown Rice", "USD 3.49", "Carryover"]],
+      "scenario10": [["0081655901303","2"],["0001820011168","1"],["0001111087508","2"],["0022583100000", "1", "Not Ready"]],
+      "scenario11": [["0001820096715", "1"], ["0007294561241", "1"], ["0004850020274", "2"] ],
+      "scenario12": [["0007225001137", "1"], ["0002840058929", "2"], ["0007294561241", "1"]],
+      "scenario12.1": [["0001820053168", "1", "REFRIGERATED"], ["0001111050719", "2", "FROZEN"]],
+      "scenario12.2": [["0002840058929", "4","AMBIENT"]]
+    },
+    "itemsUpcQtyModfs2":{
+      "scenario8": [["0001111042852", "1"] , ["0001111050719", "1"]]
+    },
+    "specialInstruction" : "test special instruction message",
+    "itemWeight": "2.99",
+    "ageRestrictedDob": ["06", "10", "1965"],
+    "phoneNumber": "9123456789",
+    "stagingZones": {
+      "store_multiOrder": ["1", "2", "3"],
+      "store_singleOrder": ["A00003C", "R00048D", "F00020C"],
+      "store_harrisTeeter": ["440-AM-01", "440-RE-01", "440-FR-01"]
+    },
+    "baseUri": {
+      "krogerStage": "https://ecsb-stage.kroger.com",
+      "echo" : "https://echo-stage.kroger.com"
+    },
+    "apiEndpoint": {
+      "pickRunBatching": "/pick-creation/v1/pick-runs/generate",
+      "pickRunPickList": "/pick-creation/v2/pick-orders",
+      "triggerSubCommunication": "/pick-creation/v1/sub-comm/orderId",
+      "substitutionCustomerResponse": "/substitutions-service/orders/orderId",
+      "controlTowerEvent": "elastic/kcp-fulfillment-store-event-consumer-stage/_search",
+      "kLog": "/elastic/pos-svc-tlog-stage/_search"
+    },
+    "spot": "12",
+    "nuroSpot": "Nuro",
+    "ciaoCouponAmount": "3.50",
+    "nuroDeliveryAddressInfo": ["5435 S Braeswood Blvd", "Houston", "Texas", "77096"],
+    "shiptDeliveryAddressInfo": ["3200 W Bay Area Blvd", "Friendswood", "Texas", "77546"]
+  }
+}

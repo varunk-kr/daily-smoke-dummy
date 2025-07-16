@@ -1,0 +1,46 @@
+name: Download APKs to Mobile Grid
+on:
+  workflow_dispatch:
+    inputs:
+      harversterArtifactID:
+        description: "Harvester APK artifactID"
+        required: true
+        default: " "
+      harversterVersion:
+        description: "Harvester APK version"
+        required: true
+        default: " "
+      ciaoArtifactId:
+        description: "Ciao APK artifactID"
+        required: true
+        default: " "
+      ciaoVersion:
+        description: "Ciao APK Version"
+        required: true
+        default: " "
+env:
+  TZ: "America/New_York"
+jobs:
+  download_apks:
+    name: download_apks
+    runs-on: [self-hosted, kubernetes]
+    container: maven:3.8.5-openjdk-11
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2.3.4
+
+      - name: Triggering Requests to download apks
+        uses: actions/setup-java@v2
+        with:
+          java-version: "11"
+          distribution: temurin
+          overwrite-settings: true
+
+      - name: Download Harvester
+        run: >-
+          curl -X POST -H "Content-Type: application/json" -d '{"name": "Harverster",  "artifact": "${{ github.event.inputs.harversterArtifactID }}", "version": "${{ github.event.inputs.harversterVersion }}"}' http://lqarmgt1001.kroger.com:5005/apk
+
+      - name: Download Ciao
+        run: >-
+          curl -X POST -H "Content-Type: application/json" -d '{"name": "Ciao",  "artifact": "${{ github.event.inputs.ciaoArtifactId }}", "version": "${{ github.event.inputs.ciaoVersion }}"}' http://lqarmgt1001.kroger.com:5005/apk
+      
