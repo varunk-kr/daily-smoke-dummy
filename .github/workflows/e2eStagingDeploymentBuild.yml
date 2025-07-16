@@ -7,8 +7,6 @@ on:
   workflow_dispatch:
 
 env:
-  ARTIFACTORY_EDGE_USERNAME_REF: ${{ secrets.ARTIFACTORY_EDGE_USERNAME }}
-  ARTIFACTORY_EDGE_TOKEN_REF: ${{ secrets.ARTIFACTORY_EDGE_TOKEN }}
   TZ: 'America/New_York'
   HARVESTER_VERSION: '5.20.1'
   CIAO_VERSION: '3.3-debug.502'
