@@ -16,7 +16,7 @@ env:
 jobs:
   run_automation_tests_job1:
     name: Bulk_Staging_Job1
-    runs-on: [ self-hosted,kubernetes ]
+    runs-on: [ kubernetes ]
     container: maven:3.8.5-openjdk-11
     steps:
       - name: Checkout code
